@@ -1,0 +1,66 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "design-pattern-java-1_1c43d681"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Springboot2EssentialsApplication<springboot2-essentials>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.gmail.andersoninfonet.springboot2essentials.Springboot2EssentialsApplication",
+            "projectName": "springboot2-essentials",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Spring2EssentialsApplication<springboot2-essentials>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.gmail.andersoninfonet.springboot2essentials.Spring2EssentialsApplication",
+            "projectName": "springboot2-essentials",
+            "args": ""
+        },
+        {
+            "type": "msedge",
+            "name": "Launch Microsoft Edge",
+            "request": "launch",
+            "runtimeExecutable": "/opt/microsoft/msedge/msedge",
+            "runtimeArgs": [
+                "--remote-debugging-port=9222"
+            ],
+            "url": "/home/andersondias/.var/app/com.visualstudio.code/data/vscode/extensions/ms-edgedevtools.vscode-edge-devtools-2.0.0/out/startpage/index.html",
+            "presentation": {
+                "hidden": true
+            }
+        },
+        {
+            "type": "msedge",
+            "name": "Launch Microsoft Edge in headless mode",
+            "request": "launch",
+            "runtimeArgs": [
+                "--headless",
+                "--remote-debugging-port=9222"
+            ],
+            "url": "/home/andersondias/.var/app/com.visualstudio.code/data/vscode/extensions/ms-edgedevtools.vscode-edge-devtools-2.0.0/out/startpage/index.html",
+            "presentation": {
+                "hidden": true
+            }
+        },
+        {
+            "type": "vscode-edge-devtools.debug",
+            "name": "Open Edge DevTools",
+            "request": "attach",
+            "url": "/home/andersondias/.var/app/com.visualstudio.code/data/vscode/extensions/ms-edgedevtools.vscode-edge-devtools-2.0.0/out/startpage/index.html",
+            "presentation": {
+                "hidden": true
+            }
+        }
+    ]
+}
