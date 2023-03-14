@@ -15,3 +15,5 @@ Catalog:
 - State : is a behavioral design pattern that allows an object to change the behavior when its internal state changes.
 
 - Command : is a behavioral design pattern that turns a request into a stand-alone object that contains all information about the request. This transformation lets you pass requests as a method arguments, delay or queue a request’s execution, and support undoable operations.
+
+- Observer : is a behavioral design pattern that lets you define a subscription mechanism to notify multiple objects about any events that happen to the object they’re observing.

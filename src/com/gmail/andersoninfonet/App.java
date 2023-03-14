@@ -6,6 +6,9 @@ import imposto.ICMS;
 import orcamento.Orcamento;
 import pedido.GeraPedido;
 import pedido.GeraPedidoHandler;
+import pedido.acao.AcaoPedidoSubject;
+import pedido.acao.EnviarEmailPedido;
+import pedido.acao.SalvarPedidoNoBancoDeDados;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -22,13 +25,18 @@ public class App {
         System.out.println(calculadoraDeDesconto.calcular(primeiro));
         System.out.println(calculadoraDeDesconto.calcular(segundo));
 
-        //teste command
+        //teste command and observer
         String cliente = "Anderson Dias";
         BigDecimal valorOrcamento = new BigDecimal("600");
         int quantidadeDeItens = 5;
 
         GeraPedido gerador = new GeraPedido(cliente, valorOrcamento, quantidadeDeItens);
-        GeraPedidoHandler handler = new GeraPedidoHandler(/*dependencias */);
+        
+        var acoes = new AcaoPedidoSubject();
+        acoes.subscribe(new SalvarPedidoNoBancoDeDados());
+        acoes.subscribe(new EnviarEmailPedido());
+        GeraPedidoHandler handler = new GeraPedidoHandler(acoes);
+
         handler.executa(gerador);
         
     }
