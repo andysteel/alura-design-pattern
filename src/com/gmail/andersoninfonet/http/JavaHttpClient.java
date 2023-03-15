@@ -1,6 +1,5 @@
 package http;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -17,13 +16,12 @@ public class JavaHttpClient implements HttpAdapter {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                                 .uri(URI.create(url))
-                                .header(url, url)
                                 .POST(HttpRequest.BodyPublishers.ofString(url))
                                 .build();
                                 
         try {
-            client.send(request, BodyHandlers.ofString());
-        } catch (IOException e) {
+            client.sendAsync(request, BodyHandlers.ofString());
+        } catch (Exception e) {
             throw new OrcamentoException("Erro ao enviar requisição HTTP", e);
         }
     }
