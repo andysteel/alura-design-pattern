@@ -4,6 +4,7 @@ import desconto.CalculadoraDeDescontos;
 import http.JavaHttpClient;
 import imposto.CalculadoraDeImpostos;
 import imposto.ICMS;
+import imposto.ISS;
 import orcamento.Orcamento;
 import orcamento.RegistroDeOrcamento;
 import pedido.GeraPedido;
@@ -17,7 +18,7 @@ public class App {
         //teste strategy
         var orcamento = new Orcamento(new BigDecimal("100"), 1);
         var calculadora = new CalculadoraDeImpostos();
-        System.out.println(calculadora.calcularImposto(orcamento, new ICMS()));
+        System.out.println(calculadora.calcularImposto(orcamento, new ICMS(null)));
 
         //teste chain of responsability and template method
         var primeiro = new Orcamento(new BigDecimal("100"), 6);
@@ -48,6 +49,11 @@ public class App {
 
         RegistroDeOrcamento registroDeOrcamento = new RegistroDeOrcamento(new JavaHttpClient());
         registroDeOrcamento.registrar(orcamentoAdapter);
+
+        //teste Decorator
+        var orcamentoDecorator = new Orcamento(new BigDecimal("100"), 1);
+        var calculadoraDecorator = new CalculadoraDeImpostos();
+        System.out.println(calculadoraDecorator.calcularImposto(orcamentoDecorator, new ICMS(new ISS(null))));
         
     }
 }
