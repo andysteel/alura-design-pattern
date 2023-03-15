@@ -6,7 +6,7 @@ import imposto.ICMS;
 import orcamento.Orcamento;
 import pedido.GeraPedido;
 import pedido.GeraPedidoHandler;
-import pedido.acao.AcaoPedidoSubject;
+import pedido.acao.AcaoPedido;
 import pedido.acao.EnviarEmailPedido;
 import pedido.acao.SalvarPedidoNoBancoDeDados;
 
@@ -32,7 +32,7 @@ public class App {
 
         GeraPedido gerador = new GeraPedido(cliente, valorOrcamento, quantidadeDeItens);
         
-        var acoes = new AcaoPedidoSubject();
+        var acoes = new AcaoPedido();
         acoes.subscribe(new SalvarPedidoNoBancoDeDados());
         acoes.subscribe(new EnviarEmailPedido());
         GeraPedidoHandler handler = new GeraPedidoHandler(acoes);
