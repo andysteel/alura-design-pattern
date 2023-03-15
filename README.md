@@ -3,7 +3,8 @@
 ###### Project created during the classes of "Deep dive into Java with architecture and design patterns" formation from Alura  
 
 <br>
-
+Behavioral patterns
+<br>
 Catalog:
 
 - Strategy : is a behavioral design pattern that lets you define a family of algorithms, put each of them into a separate class, and make their objects interchangeable.
@@ -17,3 +18,12 @@ Catalog:
 - Command : is a behavioral design pattern that turns a request into a stand-alone object that contains all information about the request. This transformation lets you pass requests as a method arguments, delay or queue a request’s execution, and support undoable operations.
 
 - Observer : is a behavioral design pattern that lets you define a subscription mechanism to notify multiple objects about any events that happen to the object they’re observing.
+
+*there are some more Behavioral patterns
+
+<br>
+Structural patterns
+<br>
+Catalog:
+
+- Adapter : is a structural design pattern that allows objects with incompatible interfaces to collaborate.

@@ -1,9 +1,11 @@
 import java.math.BigDecimal;
 
 import desconto.CalculadoraDeDescontos;
+import http.JavaHttpClient;
 import imposto.CalculadoraDeImpostos;
 import imposto.ICMS;
 import orcamento.Orcamento;
+import orcamento.RegistroDeOrcamento;
 import pedido.GeraPedido;
 import pedido.GeraPedidoHandler;
 import pedido.acao.AcaoPedido;
@@ -38,6 +40,14 @@ public class App {
         GeraPedidoHandler handler = new GeraPedidoHandler(acoes);
 
         handler.executa(gerador);
+
+        //teste Adapter
+        var orcamentoAdapter = new Orcamento(new BigDecimal("500"), 5);
+        orcamentoAdapter.aprovar();
+        orcamentoAdapter.finalizar();
+
+        RegistroDeOrcamento registroDeOrcamento = new RegistroDeOrcamento(new JavaHttpClient());
+        registroDeOrcamento.registrar(orcamentoAdapter);
         
     }
 }
