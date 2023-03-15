@@ -2,6 +2,7 @@ package pedido;
 
 import java.time.LocalDateTime;
 
+import orcamento.ItemOrcamento;
 import orcamento.Orcamento;
 import pedido.acao.AcaoPedidoSubject;
 
@@ -18,7 +19,8 @@ public class GeraPedidoHandler {
     }
     
     public void executa(GeraPedido dados) {
-        Orcamento orcamento = new Orcamento(dados.valorOrcamento(), dados.quantidadeDeItens());
+        Orcamento orcamento = new Orcamento();
+        orcamento.adicionarItem(new ItemOrcamento(dados.valorOrcamento()));
         Pedido pedido = new Pedido(dados.cliente(), LocalDateTime.now(), orcamento);
         this.acoes.execute(pedido);
     }

@@ -5,6 +5,7 @@ import http.JavaHttpClient;
 import imposto.CalculadoraDeImpostos;
 import imposto.ICMS;
 import imposto.ISS;
+import orcamento.ItemOrcamento;
 import orcamento.Orcamento;
 import orcamento.RegistroDeOrcamento;
 import pedido.GeraPedido;
@@ -16,13 +17,16 @@ import pedido.acao.SalvarPedidoNoBancoDeDados;
 public class App {
     public static void main(String[] args) throws Exception {
         //teste strategy
-        var orcamento = new Orcamento(new BigDecimal("100"), 1);
+        var orcamento = new Orcamento();
+        orcamento.adicionarItem(new ItemOrcamento(new BigDecimal("200")));
         var calculadora = new CalculadoraDeImpostos();
         System.out.println(calculadora.calcularImposto(orcamento, new ICMS(null)));
 
         //teste chain of responsability and template method
-        var primeiro = new Orcamento(new BigDecimal("100"), 6);
-        var segundo = new Orcamento(new BigDecimal("1000"), 1);
+        var primeiro = new Orcamento();
+        primeiro.adicionarItem(new ItemOrcamento(new BigDecimal("100")));
+        var segundo = new Orcamento();
+        segundo.adicionarItem(new ItemOrcamento(new BigDecimal("1000")));
 
         var calculadoraDeDesconto = new CalculadoraDeDescontos();
         System.out.println(calculadoraDeDesconto.calcular(primeiro));
@@ -43,7 +47,8 @@ public class App {
         handler.executa(gerador);
 
         //teste Adapter
-        var orcamentoAdapter = new Orcamento(new BigDecimal("500"), 5);
+        var orcamentoAdapter = new Orcamento();
+        orcamentoAdapter.adicionarItem(new ItemOrcamento(new BigDecimal("500")));
         orcamentoAdapter.aprovar();
         orcamentoAdapter.finalizar();
 
@@ -51,9 +56,19 @@ public class App {
         registroDeOrcamento.registrar(orcamentoAdapter);
 
         //teste Decorator
-        var orcamentoDecorator = new Orcamento(new BigDecimal("100"), 1);
+        var orcamentoDecorator = new Orcamento();
+        orcamentoDecorator.adicionarItem(new ItemOrcamento(new BigDecimal("100")));
         var calculadoraDecorator = new CalculadoraDeImpostos();
         System.out.println(calculadoraDecorator.calcularImposto(orcamentoDecorator, new ICMS(new ISS(null))));
+
+        //teste composite
+        var orcamentoAntigo = new Orcamento();
+        orcamentoAntigo.adicionarItem(new ItemOrcamento(new BigDecimal("200")));
+        orcamentoAntigo.aprovar();
         
+        var orcamentoNovo = new Orcamento();
+        orcamentoNovo.adicionarItem(new ItemOrcamento(new BigDecimal("100")));
+        orcamentoNovo.adicionarItem(orcamentoAntigo);
+        System.out.println(orcamentoNovo.getValor());
     }
 }
