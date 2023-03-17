@@ -32,7 +32,7 @@ public class App {
         System.out.println(calculadoraDeDesconto.calcular(primeiro));
         System.out.println(calculadoraDeDesconto.calcular(segundo));
 
-        //teste command and observer
+        //teste command, observer and facade
         String cliente = "Anderson Dias";
         BigDecimal valorOrcamento = new BigDecimal("600");
         int quantidadeDeItens = 5;
