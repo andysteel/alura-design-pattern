@@ -45,6 +45,12 @@ public class Orcamento implements Orcavel {
      * @return the valor BigDecimal
      */
     public BigDecimal getValor() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new OrcamentoException("Thread interrompida", e);
+        }
         return valor;
     }
     

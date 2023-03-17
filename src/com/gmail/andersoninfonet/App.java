@@ -7,6 +7,7 @@ import imposto.ICMS;
 import imposto.ISS;
 import orcamento.ItemOrcamento;
 import orcamento.Orcamento;
+import orcamento.OrcamentoProxy;
 import orcamento.RegistroDeOrcamento;
 import pedido.GeraPedido;
 import pedido.GeraPedidoHandler;
@@ -69,6 +70,12 @@ public class App {
         var orcamentoNovo = new Orcamento();
         orcamentoNovo.adicionarItem(new ItemOrcamento(new BigDecimal("100")));
         orcamentoNovo.adicionarItem(orcamentoAntigo);
-        System.out.println(orcamentoNovo.getValor());
+
+        OrcamentoProxy orcamentoProxy = new OrcamentoProxy(orcamentoNovo);
+
+        System.out.println(orcamentoProxy.getValor());
+        System.out.println(orcamentoProxy.getValor());
+        System.out.println(orcamentoProxy.getValor());
+        System.out.println(orcamentoProxy.getValor());
     }
 }
